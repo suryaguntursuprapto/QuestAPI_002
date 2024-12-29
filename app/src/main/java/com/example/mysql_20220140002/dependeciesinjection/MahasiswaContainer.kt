@@ -1,4 +1,4 @@
-package com.example.mysql_20220140002.container
+package com.example.mysql_20220140002.dependeciesinjection
 
 import com.example.mysql_20220140002.repository.MahasiswaRepository
 import com.example.mysql_20220140002.repository.NetworkKontakRepository
@@ -7,7 +7,6 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
-import retrofit2.create
 
 interface AppContainer{
     val kontakRepository:MahasiswaRepository
