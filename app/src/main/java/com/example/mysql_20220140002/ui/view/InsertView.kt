@@ -24,6 +24,7 @@ import com.example.mysql_20220140002.ui.navigation.DestinasiNavigasi
 import com.example.mysql_20220140002.ui.viewmodel.InsertUiEvent
 import com.example.mysql_20220140002.ui.viewmodel.InsertUiState
 import com.example.mysql_20220140002.ui.viewmodel.InsertViewModel
+import com.example.mysql_20220140002.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiEntry: DestinasiNavigasi{
