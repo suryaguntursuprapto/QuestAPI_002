@@ -28,7 +28,7 @@ object DestinasiDetail : DestinasiNavigasi {
 @Composable
 fun DetailScreen(
     nim: String,
-    onUpdate: () -> Unit,
+    onUpdate: (String) -> Unit,
     onBack: () -> Unit,
     viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -49,7 +49,7 @@ fun DetailScreen(
             val mahasiswa = detailUiState.mahasiswa
             DetailContent(
                 mahasiswa = mahasiswa,
-                onUpdate = { onUpdate },
+                onUpdate = { viewModel.getMhsDetail(nim) },
                 onDelete = {
                     viewModel.deleteMhs(nim) {
                         onBack() // Navigasi kembali setelah penghapusan

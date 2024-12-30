@@ -98,27 +98,27 @@ fun HomeStatus(
     modifier: Modifier = Modifier,
     onDeleteClick: (Mahasiswa) -> Unit = {},
     onDetailClick: (String) -> Unit
-){
-    when(homeUiState){
+) {
+    when(homeUiState) {
         is HomeUiState.Loading -> OnLoading(modifier = Modifier.fillMaxSize())
 
-        is HomeUiState.Succes ->
-            if (homeUiState.mahasiswa.isEmpty()){
-                return Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-                    Text(text = "Tidak Ada data Kontak")
+        is HomeUiState.Succes -> {
+            // Menangani data kosong
+            if (homeUiState.mahasiswa.isEmpty()) {
+                Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text(text = "Tidak Ada data Mahasiswa")
                 }
-            }else{
+            } else {
+                // Menampilkan daftar mahasiswa jika ada
                 MhsLayout(
-                    mahasiswa = homeUiState.mahasiswa, modifier = modifier.fillMaxWidth(),
-                    onDetailClick = {
-                        onDetailClick(it.nim)
-                    },
-                    onDeleteClick = {
-                        onDeleteClick(it)
-                    }
+                    mahasiswa = homeUiState.mahasiswa,
+                    modifier = modifier.fillMaxWidth(),
+                    onDetailClick = { onDetailClick(it.nim) },
+                    onDeleteClick = { onDeleteClick(it) }
                 )
             }
-        is HomeUiState.Error -> OnError(retryAction,modifier = modifier.fillMaxSize())
+        }
+        is HomeUiState.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
     }
 }
 
@@ -226,6 +226,10 @@ fun MhsCard(
 
                 Text(
                     text = mahasiswa.alamat,
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = mahasiswa.angkatan,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
